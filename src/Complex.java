@@ -119,14 +119,8 @@ public class Complex implements ComplexADT {
     @Override
     public Complex multiply(Complex c) {
         // multiply all terms
-        int x = this.getReal() * c.getReal();
-        int y = this.getReal() * c.getImaginary();
-        int v = this.getImaginary() * c.getReal();
-        int z = this.getImaginary() * c.getImaginary();
-
-        // simplify all terms
-        int tempReal = x + (z * -1);
-        int tempImaginary = y + v;
+        int tempReal = (this.getReal() * c.getReal()) - (this.getImaginary() * c.getImaginary());
+        int tempImaginary = (this.getImaginary() * c.getReal()) + (this.getReal() * c.getImaginary());
 
         // return total
         return new Complex(tempReal, tempImaginary);
